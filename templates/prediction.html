@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .data {
+            max-width: 400px;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .data h1 {
+            text-align: center;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+        }
+        .data input[type=text] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .data button[type=submit] {
+            width: 100%;
+            padding: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .data button[type=submit]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="data">
+            <h1>FWI Prediction</h1>
+            <!-- Main Input For Receiving Query to our ML Model-->
+            <form id="prediction-form" action="/predictdata" method="POST">
+                <input type="text" id="Temperature" name="Temperature" placeholder="Temperature (°C)" required /><br>
+                <input type="text" id="RH" name="RH" placeholder="Relative Humidity (%)" required /><br>
+                <input type="text" id="Ws" name="Ws" placeholder="Wind Speed (km/h)" required /><br>
+                <input type="text" id="Rain" name="Rain" placeholder="Rainfall (mm)" required /><br>
+                <input type="text" id="FFMC" name="FFMC" placeholder="Fine Fuel Moisture Code" required /><br>
+                <input type="text" id="DMC" name="DMC" placeholder="Duff Moisture Code" required /><br>
+                <input type="text" id="ISI" name="ISI" placeholder="Initial Spread Index" required /><br>
+                <input type="text" id="Classes" name="Classes" placeholder="Fire Classes (0/1)" required /><br>
+                <input type="text" id="Region" name="Region" placeholder="Region (0/1)" required /><br>
+                <button type="submit" class="btn btn-primary btn-block">Predict</button>
+            </form>
+            <div class="result" id="prediction-result"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#prediction-form').submit(function(event){
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "/predictdata",
+                    data: formData,
+                    success: function(response){
+                        // Access the prediction value from the response object
+                        var prediction = response.prediction;
+
+                        // Update the HTML content with the prediction value
+                        $('#prediction-result').html('The FWI prediction is ' + prediction);
+                    },
+                    error: function(){
+                        $('#prediction-result').html('An error occurred, please try again.');
+                    }
+                });
+            });
+        });
+    </script>    
+    
+</body>
+</html>
