@@ -61,12 +61,12 @@ To run the Algerian Wildfire Predictor project on your local machine, follow the
 
 5. Train the machine learning model by running the model training script (`notebooks/model_training.ipynb`). This script will train the model using the preprocessed data and save the trained model and scaler.
 
-6. Set up the Flask application by updating the paths to the trained model and scaler in the `app.py` file to point to the location of the saved model and scaler on your system.
+6. Set up the Flask application by updating the paths to the trained model and scaler in the `application.py` file to point to the location of the saved model and scaler on your system.
 
-7. Start the Flask application by running the `app.py` script:
+7. Start the Flask application by running the `application.py` script:
 
    ```
-   python app.py
+   python application.py
    ```
 
 8. Access the web interface of the Algerian Wildfire Predictor by opening a web browser and navigating to `http://localhost:5001`. You can input environmental factors to get predictions on the likelihood of forest fires.
