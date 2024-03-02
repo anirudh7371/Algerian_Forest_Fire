@@ -1,3 +1,4 @@
+
 # Algerian Wildfire Predictor
 
 ## Overview
@@ -11,6 +12,33 @@ The Algerian Wildfire Predictor is a machine learning project aimed at predictin
 - **models/**: Directory containing serialized trained models and scalers.
 - **requirements.txt**: List of Python dependencies required to run the project.
 - **README.md**: Documentation file providing an overview of the project and instructions for running it.
+
+## Dataset Description
+
+The Algerian Wildfire Predictor project utilizes the Algerian Forest Fires dataset, which is publicly available on the UCI Machine Learning Repository. This dataset contains information about forest fires in Algeria, focusing on various environmental factors that may contribute to the occurrence of wildfires. Here's a brief overview of the dataset:
+
+- **Title**: Algerian Forest Fires Dataset
+- **Source**: UCI Machine Learning Repository
+- **URL**: [Algerian Forest Fires Dataset](https://archive.ics.uci.edu/dataset/547/algerian+forest+fires+dataset)
+- **Attributes**:
+  1. **day**: Day of the month (1-31).
+  2. **month**: Month of the year (1-12).
+  3. **year**: Year (2012 or 2013).
+  4. **temperature**: Temperature in Celsius degrees.
+  5. **RH**: Relative humidity (%).
+  6. **WSPM**: Wind speed in meters per second.
+  7. **rain**: Rainfall in millimeters per square meter.
+  8. **FFMC**: Fine Fuel Moisture Code (numeric rating of the moisture content of litter and other cured fine fuels).
+  9. **DMC**: Duff Moisture Code (numeric rating of the average moisture content of loosely compacted organic layers of moderate depth).
+  10. **DC**: Drought Code (numeric rating of the average moisture content of deep, compact organic layers).
+  11. **ISI**: Initial Spread Index (numeric rating of the expected rate of fire spread).
+  12. **BUI**: Buildup Index (numeric rating of the total amount of fuel available for combustion).
+  13. **FWI**: Fire Weather Index (numeric rating of fire intensity).
+  14. **Classes**: Class attribute indicating the severity of the fire danger (Classes: 'low', 'moderate', 'high', 'very high', 'extreme').
+
+This dataset provides a comprehensive set of features related to weather conditions and environmental indices, along with the corresponding severity of fire danger. It serves as the foundation for training the predictive model in the Algerian Wildfire Predictor project, enabling accurate assessments of wildfire risks based on current environmental factors.
+
+By leveraging this dataset and machine learning techniques, the Algerian Wildfire Predictor aims to enhance wildfire prevention efforts by providing timely predictions and insights into the likelihood of forest fires in Algeria.
 
 ## Getting Started
 To run the Algerian Wildfire Predictor project on your local machine, follow these steps:
